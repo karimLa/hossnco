@@ -1,20 +1,21 @@
-import React, { useContext } from 'react';
-
+import React, { useContext, useState } from 'react';
 import {
 	ImageBackground,
-	ImageSourcePropType,
 	StyleSheet,
 	Text,
-	TouchableOpacity,
+	TouchableHighlight,
 	View,
 	useWindowDimensions,
 } from 'react-native';
+import BtnPrimary from '../components/BtnPrimary';
 import { LocalizationContext } from '../context/Localization';
+import { LandingProps } from '../types/navigation.d';
+import { landingScreenBg } from '../constants/images';
+import { storeData } from '../utils/storage';
 
-const image: ImageSourcePropType = require('../../assets/lang-bg-1.jpg');
-
-const LandingScreen = () => {
-	const { t, setLocale } = useContext(LocalizationContext);
+const LandingScreen: React.VFC<LandingProps> = ({ navigation }) => {
+	const { t, locale, setLocale } = useContext(LocalizationContext);
+	const [selectedIndex, setSelectedIndex] = useState(-1);
 	const { width, height } = useWindowDimensions();
 	const btns = [
 		{ text: t('french'), code: 'fr' },
@@ -24,7 +25,7 @@ const LandingScreen = () => {
 
 	return (
 		<View style={styles.container}>
-			<ImageBackground source={image} style={styles.image}>
+			<ImageBackground source={landingScreenBg} style={styles.image}>
 				<View
 					style={{
 						width: width * 0.8,
@@ -34,20 +35,28 @@ const LandingScreen = () => {
 				>
 					<Text style={styles.title}>{t('chooseLanguage')}</Text>
 
-					{btns.map((btn) => (
-						<TouchableOpacity
+					{btns.map((btn, i) => (
+						<BtnPrimary
 							key={btn.code}
-							activeOpacity={0.8}
-							style={styles.langBtn}
-							onPress={() => setLocale(btn.code)}
-						>
-							<Text style={styles.langBtnText}>{btn.text}</Text>
-						</TouchableOpacity>
+							text={btn.text}
+							index={i}
+							selectedIndex={selectedIndex}
+							onPress={() => {
+								setLocale(btn.code);
+								setSelectedIndex(i);
+							}}
+						/>
 					))}
 				</View>
-				<TouchableOpacity style={styles.submitBtn} onPress={() => null}>
+				<TouchableHighlight
+					style={styles.submitBtn}
+					onPress={() => {
+						storeData('locale', locale);
+						navigation.navigate('Boarding');
+					}}
+				>
 					<Text style={styles.submitBtnText}>{t('go')}!</Text>
-				</TouchableOpacity>
+				</TouchableHighlight>
 			</ImageBackground>
 		</View>
 	);
@@ -70,21 +79,6 @@ const styles = StyleSheet.create({
 		color: '#ccc',
 		fontWeight: '700',
 		marginBottom: 30,
-		alignSelf: 'center',
-	},
-	langBtn: {
-		backgroundColor: 'white',
-		borderColor: 'blue',
-		fontSize: 20,
-		borderWidth: 1,
-		borderRadius: 10,
-		marginTop: 25,
-		paddingHorizontal: 20,
-		paddingVertical: 10,
-	},
-	langBtnText: {
-		fontSize: 18,
-		color: 'blue',
 		alignSelf: 'center',
 	},
 	submitBtn: {

@@ -12,9 +12,9 @@ interface Props {
 }
 
 export const Slide: React.VFC<Props> = ({ type }) => (
-	<Transition.Sequence>
-		<Transition.Out type={type} />
-		<Transition.Change interpolation='easeInOut' />
+	<Transition.Together>
 		<Transition.In type={type} />
-	</Transition.Sequence>
+		<Transition.Change interpolation='easeInOut' />
+		<Transition.Out type={type} />
+	</Transition.Together>
 );

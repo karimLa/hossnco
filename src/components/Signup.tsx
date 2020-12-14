@@ -1,12 +1,12 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import TextInput from './TextInput';
 import { Feather } from '@expo/vector-icons';
 
 const Signup = () => {
 	return (
-		<View>
-			<View style={styles.container}>
+		<View style={styles.container}>
+			<View style={styles.inputGroup}>
 				<TextInput
 					placeholder='Username'
 					icon={<Feather name='user' size={24} color='gray' />}
@@ -22,6 +22,18 @@ const Signup = () => {
 					icon={<Feather name='key' size={24} color='gray' />}
 				/>
 			</View>
+			<View
+				style={{
+					marginTop: 15,
+					justifyContent: 'center',
+					alignItems: 'center',
+				}}
+			>
+				<Text style={{ color: 'gray' }}>
+					By pressing submit, you agree to our
+				</Text>
+				<Text style={{ color: 'blue' }}>terms & conidtions</Text>
+			</View>
 		</View>
 	);
 };
@@ -30,7 +42,10 @@ export default Signup;
 
 const styles = StyleSheet.create({
 	container: {
+		height: 400,
+	},
+	inputGroup: {
 		justifyContent: 'space-between',
-		height: '83%',
+		height: '45%',
 	},
 });

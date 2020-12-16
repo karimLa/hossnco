@@ -2,14 +2,14 @@ import 'react-native-gesture-handler';
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import LocalizationContainer from './src/context/Localization';
+import LocalizationProvider from './src/context/Localization';
 import { LandingScreen, BoardingScreen } from './src/screens';
 
 const Stack = createStackNavigator();
 
 export default function App() {
 	return (
-		<LocalizationContainer>
+		<LocalizationProvider>
 			<NavigationContainer>
 				<Stack.Navigator initialRouteName='Landing'>
 					<Stack.Screen
@@ -24,6 +24,6 @@ export default function App() {
 					/>
 				</Stack.Navigator>
 			</NavigationContainer>
-		</LocalizationContainer>
+		</LocalizationProvider>
 	);
 }

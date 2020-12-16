@@ -1,4 +1,4 @@
-import React, { createContext, useMemo, useState } from 'react';
+import React, { createContext, useContext, useMemo, useState } from 'react';
 import * as Localization from 'expo-localization';
 import i18n from 'i18n-js';
 import en from '../i18n/en';
@@ -6,11 +6,12 @@ import fr from '../i18n/fr';
 import ar from '../i18n/ar';
 
 type tFunc = (scope: i18n.Scope, options?: i18n.TranslateOptions) => string;
+type locales = 'en' | 'fr' | 'ar';
 
 interface Context {
 	t: tFunc;
 	locale: locales;
-	setLocale: React.Dispatch<React.SetStateAction<string>>;
+	setLocale: React.Dispatch<React.SetStateAction<locales>>;
 }
 
 i18n.translations = {
@@ -21,13 +22,24 @@ i18n.translations = {
 i18n.locale = Localization.locale;
 i18n.fallbacks = true;
 
-// @ts-ignore
-export const LocalizationContext = createContext<Context>({});
+const LocalizationContext = createContext<Context | undefined>(undefined);
 
-const LocalizationContainer: React.FC = ({ children }) => {
-	const [locale, setLocale] = useState(Localization.locale);
+export function useLocalization() {
+	const context = useContext(LocalizationContext);
 
-	const localizationContext = useMemo(
+	if (context === undefined) {
+		throw new Error(
+			'useLocalization must be used within a LocalizationProvider'
+		);
+	}
+
+	return context;
+}
+
+const LocalizationProvider: React.FC = ({ children }) => {
+	const [locale, setLocale] = useState(Localization.locale as locales);
+
+	const localization = useMemo(
 		() => ({
 			t: (scope: i18n.Scope, options?: i18n.TranslateOptions) =>
 				i18n.t(scope, { locale, ...options }),
@@ -38,10 +50,10 @@ const LocalizationContainer: React.FC = ({ children }) => {
 	);
 
 	return (
-		<LocalizationContext.Provider value={localizationContext}>
+		<LocalizationContext.Provider value={localization}>
 			{children}
 		</LocalizationContext.Provider>
 	);
 };
 
-export default LocalizationContainer;
+export default LocalizationProvider;

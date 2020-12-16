@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import {
 	ImageBackground,
 	StyleSheet,
@@ -8,16 +8,16 @@ import {
 	useWindowDimensions,
 } from 'react-native';
 import BtnPrimary from '../components/BtnPrimary';
-import { LocalizationContext } from '../context/Localization';
+import { useLocalization } from '../context/Localization';
 import { LandingProps } from '../types/navigation.d';
 import { landingScreenBg } from '../constants/images';
 import { storeData } from '../utils/storage';
 
 const LandingScreen: React.VFC<LandingProps> = ({ navigation }) => {
-	const { t, locale, setLocale } = useContext(LocalizationContext);
+	const { t, locale, setLocale } = useLocalization();
 	const [selectedIndex, setSelectedIndex] = useState(-1);
 	const { width, height } = useWindowDimensions();
-	const btns = [
+	const btns: { text: string; code: typeof locale }[] = [
 		{ text: t('french'), code: 'fr' },
 		{ text: t('english'), code: 'en' },
 		{ text: t('arabic'), code: 'ar' },

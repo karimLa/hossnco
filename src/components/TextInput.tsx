@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import {
 	StyleSheet,
 	View,
@@ -8,54 +8,47 @@ import {
 	StyleProp,
 	ViewStyle,
 } from 'react-native';
-import { Transitioning, TransitioningView } from 'react-native-reanimated';
-import { Slide } from '../utils/animations';
 
 interface Props extends TextInputProps {
-	icon?: any;
-	name: string;
+	icon?: React.ReactNode;
 	boxStyles?: StyleProp<ViewStyle>;
-	touched: any;
-	errors: any;
+	touched?: boolean;
+	error?: string;
 }
 
 const TextInput: React.VFC<Props> = ({
 	icon,
 	boxStyles,
 	touched,
-	errors,
-	name,
+	error,
 	...props
 }) => {
-	const errorRef = useRef<TransitioningView>();
-
 	return (
 		<View style={boxStyles}>
 			<View
 				style={[
 					styles.textInputBox,
-					{ borderColor: touched[name] && errors[name] ? 'red' : 'lightblue' },
+					{
+						borderColor:
+							touched && !error ? 'green' : error ? 'red' : 'lightblue',
+					},
 				]}
 			>
 				{icon && icon}
 				<Input style={styles.textInput} {...props} />
 			</View>
-			<Transitioning.View ref={errorRef} transition={<Slide type='scale' />}>
-				{touched[name] && errors[name] && (
-					<Text style={styles.error}>{errors[name]}</Text>
-				)}
-			</Transitioning.View>
+
+			{error && error.length > 0 ? (
+				<Text style={styles.error}>{error}</Text>
+			) : null}
 		</View>
 	);
 };
 
 TextInput.defaultProps = {
-	boxStyles: {},
-	touched: {},
-	errors: {},
 	boxStyles: {
-		marginBottom: 15
-	}
+		marginBottom: 15,
+	},
 };
 
 export default TextInput;

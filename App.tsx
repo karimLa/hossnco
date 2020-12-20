@@ -11,7 +11,7 @@ export default function App() {
 	return (
 		<LocalizationProvider>
 			<NavigationContainer>
-				<Stack.Navigator initialRouteName='Boarding'>
+				<Stack.Navigator initialRouteName='Landing'>
 					<Stack.Screen
 						options={{ headerShown: false }}
 						name='Landing'

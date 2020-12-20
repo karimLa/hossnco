@@ -5,8 +5,10 @@ import { Transitioning, TransitioningView } from 'react-native-reanimated';
 import { Slide } from '../utils/animations';
 import Signup from './Signup';
 import Signin from './Signin';
+import { useLocalization } from '../context/Localization';
 
 const BoardingForm = () => {
+	const { t } = useLocalization();
 	const tabOneRef = useRef<TransitioningView>();
 	const tabTwoRef = useRef<TransitioningView>();
 
@@ -28,7 +30,7 @@ const BoardingForm = () => {
 							setShowSignup(false);
 						}}
 					>
-						<Text>Login</Text>
+						<Text>{t('signin')}</Text>
 					</TouchableOpacity>
 					<TouchableOpacity
 						style={{ borderBottomWidth: showSignup ? 1 : 0 }}
@@ -37,7 +39,7 @@ const BoardingForm = () => {
 							setShowSignup(true);
 						}}
 					>
-						<Text>Sign up</Text>
+						<Text>{t('signup')}</Text>
 					</TouchableOpacity>
 				</View>
 

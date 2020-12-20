@@ -8,8 +8,11 @@ import {
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import BoardingForm from '../components/BoardingForm';
+import { useLocalization } from '../context/Localization';
 
 const BoardingScreen = () => {
+	const { t } = useLocalization();
+
 	return (
 		<TouchableWithoutFeedback onPress={Keyboard.dismiss}>
 			<View style={styles.container}>
@@ -18,13 +21,8 @@ const BoardingScreen = () => {
 					colors={['#453dcb', '#00d4ff']}
 					end={{ y: 0.99, x: 0.99 }}
 				>
-					<Text style={styles.headline}>Welcome!</Text>
-					<Text style={styles.paragraph}>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur
-						odit itaque consectetur dolorem fuga veniam quos esse inventore
-						iste, expedita, similique eius ipsum illo molestiae corporis autem
-						ex commodi sed.
-					</Text>
+					<Text style={styles.headline}>{t('greeting')}</Text>
+					<Text style={styles.paragraph}>{t('onBoardingIntro')}</Text>
 				</LinearGradient>
 
 				<BoardingForm />

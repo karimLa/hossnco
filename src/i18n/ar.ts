@@ -4,4 +4,7 @@ export default {
 	arabic: 'العربية',
 	french: 'الفرنسية',
 	go: 'انطلق',
+	validation: {
+		min :'الحد الأدنى هو %{min}'
+	}
 }

@@ -56,7 +56,7 @@ const Signup = () => {
 
 			<View
 				style={{
-					marginTop: 15,
+					marginTop: 10,
 					justifyContent: 'center',
 					alignItems: 'center',
 				}}

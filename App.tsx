@@ -4,26 +4,30 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import LocalizationProvider from './src/context/Localization';
 import { LandingScreen, BoardingScreen } from './src/screens';
+import { ThemeProvider } from '@shopify/restyle';
+import theme from './src/constants/theme';
 
 const Stack = createStackNavigator();
 
 export default function App() {
 	return (
 		<LocalizationProvider>
-			<NavigationContainer>
-				<Stack.Navigator initialRouteName='Landing'>
-					<Stack.Screen
-						options={{ headerShown: false }}
-						name='Landing'
-						component={LandingScreen}
-					/>
-					<Stack.Screen
-						options={{ headerShown: false }}
-						name='Boarding'
-						component={BoardingScreen}
-					/>
-				</Stack.Navigator>
-			</NavigationContainer>
+			<ThemeProvider theme={theme}>
+				<NavigationContainer>
+					<Stack.Navigator initialRouteName='Landing'>
+						<Stack.Screen
+							options={{ headerShown: false }}
+							name='Landing'
+							component={LandingScreen}
+						/>
+						<Stack.Screen
+							options={{ headerShown: false }}
+							name='Boarding'
+							component={BoardingScreen}
+						/>
+					</Stack.Navigator>
+				</NavigationContainer>
+			</ThemeProvider>
 		</LocalizationProvider>
 	);
 }

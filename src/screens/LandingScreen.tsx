@@ -1,22 +1,21 @@
 import React, { useState } from 'react';
 import {
+	Alert,
 	ImageBackground,
 	StyleSheet,
-	Text,
 	TouchableHighlight,
-	View,
-	useWindowDimensions,
 } from 'react-native';
-import BtnPrimary from '../components/BtnPrimary';
 import { useLocalization } from '../context/Localization';
 import { LandingProps } from '../types/navigation.d';
 import { landingScreenBg } from '../constants/images';
 import { storeData } from '../utils/storage';
+import Text from '../components/Text';
+import Box from '../components/Box';
+import ButtonHighlight from '../components/ButtonHighlight';
 
 const LandingScreen: React.VFC<LandingProps> = ({ navigation }) => {
 	const { t, locale, setLocale } = useLocalization();
 	const [selectedIndex, setSelectedIndex] = useState(-1);
-	const { width, height } = useWindowDimensions();
 	const btns: { text: string; code: typeof locale }[] = [
 		{ text: t('french'), code: 'fr' },
 		{ text: t('english'), code: 'en' },
@@ -24,19 +23,23 @@ const LandingScreen: React.VFC<LandingProps> = ({ navigation }) => {
 	];
 
 	return (
-		<View style={styles.container}>
+		<Box flex={1}>
 			<ImageBackground source={landingScreenBg} style={styles.image}>
-				<View
-					style={{
-						width: width * 0.8,
-						height: height * 0.8,
-						justifyContent: 'center',
-					}}
+				<Box
+					width='80%'
+					height='80%'
+					justifyContent='center'
+					alignItems='center'
 				>
-					<Text style={styles.title}>{t('chooseLanguage')}</Text>
+					<Text variant='header' marginBottom='md'>
+						{t('chooseLanguage')}
+					</Text>
 
 					{btns.map((btn, i) => (
-						<BtnPrimary
+						<ButtonHighlight
+							bgHighlight='gradientStart'
+							width='80%'
+							marginTop='md'
 							key={btn.code}
 							text={btn.text}
 							index={i}
@@ -47,53 +50,42 @@ const LandingScreen: React.VFC<LandingProps> = ({ navigation }) => {
 							}}
 						/>
 					))}
-				</View>
+				</Box>
 				<TouchableHighlight
-					style={styles.submitBtn}
 					onPress={() => {
+						if (selectedIndex === -1) {
+							Alert.alert(t('chooseLanguage'));
+							return;
+						}
 						storeData('locale', locale);
 						navigation.navigate('Boarding');
 					}}
 				>
-					<Text style={styles.submitBtnText}>{t('go')}!</Text>
+					<Box
+						alignSelf='center'
+						justifyContent='center'
+						alignItems='center'
+						width={80}
+						height={80}
+						padding='sm'
+						borderRadius={40}
+						backgroundColor='mainBackground'
+					>
+						<Text variant='btnText'>{t('go')}!</Text>
+					</Box>
 				</TouchableHighlight>
 			</ImageBackground>
-		</View>
+		</Box>
 	);
 };
 
 export default LandingScreen;
 
 const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-	},
 	image: {
 		flex: 1,
 		resizeMode: 'cover',
 		justifyContent: 'center',
 		alignItems: 'center',
-	},
-	title: {
-		fontSize: 26,
-		color: '#ccc',
-		fontWeight: '700',
-		marginBottom: 30,
-		alignSelf: 'center',
-	},
-	submitBtn: {
-		alignSelf: 'center',
-		justifyContent: 'center',
-		alignItems: 'center',
-		backgroundColor: '#ccc',
-		width: 80,
-		height: 80,
-		padding: 10,
-		borderRadius: 40,
-	},
-	submitBtnText: {
-		alignSelf: 'center',
-		fontSize: 18,
-		color: 'blue',
 	},
 });

@@ -67,7 +67,7 @@ export default BoardingForm;
 
 const styles = StyleSheet.create({
 	formContainer: {
-		height: 400,
+		height: 420,
 		paddingHorizontal: '6%',
 	},
 	form: {

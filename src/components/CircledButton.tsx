@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
+import useTheme from '../context/useTheme';
 
 interface Props extends TouchableOpacityProps {
 	handleSubmit: () => void;
@@ -16,11 +17,13 @@ interface Props extends TouchableOpacityProps {
 }
 
 const CircledButton: React.VFC<Props> = ({ handleSubmit, style, ...props }) => {
+	const { colors } = useTheme();
+
 	return (
 		<View style={[styles.outerCircle, style]}>
 			<TouchableOpacity activeOpacity={0.6} onPress={handleSubmit} {...props}>
 				<LinearGradient
-					colors={['#453dcb', '#00d4ff']}
+					colors={[colors.gradientStart, colors.gradientEnd]}
 					end={{ y: 0.99, x: 0.99 }}
 					style={styles.innerCircle}
 				>

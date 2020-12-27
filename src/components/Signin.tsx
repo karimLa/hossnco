@@ -1,13 +1,15 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
-import TextInput from './TextInput';
+import { TouchableWithoutFeedback } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import CheckBox from '@react-native-community/checkbox';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 import { validateSignin } from '../utils/validation';
-import CircledButton from './CircledButton';
 import { useLocalization } from '../context/Localization';
+import CircledButton from './CircledButton';
+import Box from './Box';
+import Text from './Text';
+import TextInput from './TextInput';
 import useForm from '../hooks/useForm';
+import ButtonOpacity from './ButtonOpacity';
 
 const Signin = () => {
 	const { t } = useLocalization();
@@ -26,32 +28,35 @@ const Signin = () => {
 	};
 
 	return (
-		<View style={styles.container}>
-			<View style={styles.inputGroup}>
-				<TextInput
-					placeholder={t('email')}
-					value={values.email}
-					icon={<Feather name='user' size={24} color='gray' />}
-					onBlur={handleBlur('email')}
-					onChangeText={handleChange('email')}
-					touched={touched.email}
-					error={errors.email}
-				/>
-				<TextInput
-					placeholder={t('password')}
-					value={values.password}
-					icon={<Feather name='key' size={24} color='gray' />}
-					onBlur={handleBlur('password')}
-					onChangeText={handleChange('password')}
-					touched={touched.password}
-					error={errors.password}
-					autoCorrect={false}
-					secureTextEntry
-				/>
-			</View>
+		<Box position='relative' height='100%'>
+			<TextInput
+				placeholder={t('email')}
+				value={values.email}
+				icon='user'
+				onBlur={handleBlur('email')}
+				onChangeText={handleChange('email')}
+				touched={touched.email}
+				error={errors.email}
+			/>
+			<TextInput
+				placeholder={t('password')}
+				value={values.password}
+				icon='key'
+				onBlur={handleBlur('password')}
+				onChangeText={handleChange('password')}
+				touched={touched.password}
+				error={errors.password}
+				autoCorrect={false}
+				secureTextEntry
+			/>
 
-			<View style={styles.actions}>
-				<View style={styles.rememberMe}>
+			<Box
+				marginTop='xs'
+				flexDirection='row'
+				alignItems='center'
+				justifyContent='space-between'
+			>
+				<Box flexDirection='row' alignItems='center'>
 					<CheckBox
 						disabled={false}
 						value={values.rememberMe}
@@ -62,39 +67,24 @@ const Signin = () => {
 						offAnimationType={'stroke'}
 						onValueChange={handleCheckbox('rememberMe')}
 					/>
-					<TouchableOpacity onPress={handleCheckbox('rememberMe')}>
-						<Text style={{ color: 'gray' }}>{t('rememberMe')}</Text>
-					</TouchableOpacity>
-				</View>
+					<TouchableWithoutFeedback onPress={handleCheckbox('rememberMe')}>
+						<Text color='textGrey'>{t('rememberMe')}</Text>
+					</TouchableWithoutFeedback>
+				</Box>
 
-				<TouchableOpacity>
-					<Text style={{ color: 'blue' }}>{t('forgotPass')}</Text>
-				</TouchableOpacity>
-			</View>
+				<ButtonOpacity>
+					<Text color='gradientStart'>{t('forgotPass')}</Text>
+				</ButtonOpacity>
+			</Box>
 
-			<CircledButton handleSubmit={done(handleSubmit)} />
-		</View>
+			<CircledButton
+				position='absolute'
+				bottom={-40}
+				left='50%'
+				style={{ transform: [{ translateX: -40 }] }}
+				onPress={done(handleSubmit)}
+			/>
+		</Box>
 	);
 };
-
 export default Signin;
-
-const styles = StyleSheet.create({
-	container: {
-		height: '100%',
-		position: 'relative',
-	},
-	inputGroup: {
-		justifyContent: 'space-between',
-	},
-	actions: {
-		marginTop: 15,
-		flexDirection: 'row',
-		alignItems: 'center',
-		justifyContent: 'space-between',
-	},
-	rememberMe: {
-		flexDirection: 'row',
-		alignItems: 'center',
-	},
-});

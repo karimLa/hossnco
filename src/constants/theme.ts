@@ -12,10 +12,13 @@ const palette = {
   black: '#0B0B0B',
 	white: '#F0F2F3',
 
-	gray: '#ccc',
+	gray: '#adadad',
+	grayDark: '#8f8989',
 	
 	blueDark:'#453dcb',
-	blueLight: '#00d4ff'
+	blueLight: '#00d4ff',
+	
+	red: '#e63e2c'
 };
 
 const theme = createTheme({
@@ -25,7 +28,11 @@ const theme = createTheme({
 		gradientEnd: palette.blueLight,
 		mainHeadline: palette.white,
 		textBlack: palette.black,
-		textWhite: palette.white
+		textWhite: palette.white,
+		textGrey: palette.gray,
+		textError: palette.red,
+		textSuccess: palette.greenLight,
+		iconColor: palette.grayDark
   },
   spacing: {
 		xs: 4,
@@ -43,9 +50,13 @@ const theme = createTheme({
 			color: 'mainHeadline',
 			fontWeight: '700',
 		},
-		btnText: {
+		textButton: {
 			fontSize: 18,
 			color: 'gradientStart',
+		},
+		textError: {
+			fontSize: 12,
+			color: 'textError',
 		}
 	},
   breakpoints: {

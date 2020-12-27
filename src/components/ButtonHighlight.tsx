@@ -43,7 +43,7 @@ function ButtonHighlight({
 			alignItems='center'
 			{...props}
 		>
-			<Text variant='btnText' color={textColor}>
+			<Text variant='textButton' color={textColor}>
 				{text}
 			</Text>
 		</BaseButton>

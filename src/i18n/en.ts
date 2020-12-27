@@ -3,7 +3,7 @@ export default {
 	english: 'English',
 	arabic: 'Arabic',
 	french: 'French',
-	go: 'Go',
+	go: 'Go!',
 	greeting: 'Welcome!',
 	onBoardingIntro: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur odit itaque consectetur dolorem fuga veniam quos esse inventoreiste, expedita, similique eius ipsum illo molestiae corporis autem ex commodi sed.',
 	signin: 'Login',

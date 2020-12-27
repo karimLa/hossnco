@@ -3,5 +3,5 @@ export default {
 	english: 'Anglais',
 	arabic: 'Arabic',
 	french: 'Français',
-	go: 'Partir',
+	go: 'Partir!',
 }

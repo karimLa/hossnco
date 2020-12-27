@@ -3,7 +3,7 @@ export default {
 	english: 'الإنجليزية',
 	arabic: 'العربية',
 	french: 'الفرنسية',
-	go: 'انطلق',
+	go: 'انطلق!',
 	validation: {
 		min :'الحد الأدنى هو %{min}'
 	}

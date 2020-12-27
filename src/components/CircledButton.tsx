@@ -1,61 +1,55 @@
 import React from 'react';
-import {
-	StyleProp,
-	StyleSheet,
-	TouchableOpacity,
-	TouchableOpacityProps,
-	View,
-	ViewStyle,
-} from 'react-native';
-import { Feather } from '@expo/vector-icons';
+import { StyleSheet } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import { Feather } from '@expo/vector-icons';
+import ButtonOpacity from './ButtonOpacity';
 import useTheme from '../context/useTheme';
 
-interface Props extends TouchableOpacityProps {
-	handleSubmit: () => void;
-	style?: StyleProp<ViewStyle>;
+interface Props {
+	text?: string;
+	iconName?: string;
 }
 
-const CircledButton: React.VFC<Props> = ({ handleSubmit, style, ...props }) => {
+const CircledButton: React.FC<Props> = ({
+	children,
+	text,
+	iconName,
+	...props
+}) => {
 	const { colors } = useTheme();
 
 	return (
-		<View style={[styles.outerCircle, style]}>
-			<TouchableOpacity activeOpacity={0.6} onPress={handleSubmit} {...props}>
+		<ButtonOpacity
+			width={90}
+			height={90}
+			borderRadius={45}
+			justifyContent='center'
+			alignItems='center'
+			{...props}
+		>
+			{children ? (
+				children
+			) : (
 				<LinearGradient
 					colors={[colors.gradientStart, colors.gradientEnd]}
-					end={{ y: 0.99, x: 0.99 }}
+					end={{ x: 0.99, y: 0.99 }}
 					style={styles.innerCircle}
 				>
-					<Feather name='arrow-right' size={45} color='white' />
+					<Feather name={iconName!} size={45} color='white' />
 				</LinearGradient>
-			</TouchableOpacity>
-		</View>
+			)}
+		</ButtonOpacity>
 	);
 };
 
 CircledButton.defaultProps = {
-	style: {
-		position: 'absolute',
-		left: '50%',
-		transform: [{ translateX: -45 }],
-	},
+	iconName: 'arrow-right',
 };
 
 export default CircledButton;
 
 const styles = StyleSheet.create({
-	outerCircle: {
-		bottom: -45,
-		width: 90,
-		height: 90,
-		borderRadius: 90,
-		backgroundColor: 'white',
-		justifyContent: 'center',
-		alignItems: 'center',
-	},
 	innerCircle: {
-		backgroundColor: 'lightblue',
 		width: 75,
 		height: 75,
 		justifyContent: 'center',

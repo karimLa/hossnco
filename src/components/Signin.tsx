@@ -1,6 +1,5 @@
 import React from 'react';
 import { TouchableWithoutFeedback } from 'react-native';
-import { Feather } from '@expo/vector-icons';
 import CheckBox from '@react-native-community/checkbox';
 import { validateSignin } from '../utils/validation';
 import { useLocalization } from '../context/Localization';
@@ -11,7 +10,11 @@ import TextInput from './TextInput';
 import useForm from '../hooks/useForm';
 import ButtonOpacity from './ButtonOpacity';
 
-const Signin = () => {
+interface Props {
+	toggleForgotPassword: () => void;
+}
+
+const Signin: React.VFC<Props> = ({ toggleForgotPassword }) => {
 	const { t } = useLocalization();
 	const {
 		values,
@@ -72,7 +75,7 @@ const Signin = () => {
 					</TouchableWithoutFeedback>
 				</Box>
 
-				<ButtonOpacity>
+				<ButtonOpacity onPress={toggleForgotPassword}>
 					<Text color='gradientStart'>{t('forgotPass')}</Text>
 				</ButtonOpacity>
 			</Box>

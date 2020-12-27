@@ -6,8 +6,6 @@ export default {
 	go: 'Go!',
 	greeting: 'Welcome!',
 	onBoardingIntro: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur odit itaque consectetur dolorem fuga veniam quos esse inventoreiste, expedita, similique eius ipsum illo molestiae corporis autem ex commodi sed.',
-	signin: 'Login',
-	signup: 'Sign up',
 	username: 'Username',
 	email: 'Email Address',
 	password: 'Password',
@@ -19,5 +17,10 @@ export default {
 		min : 'minimum is %{min}.',
 		email: 'email is not valid.',
 		required: 'this field is required.'
+	},
+	onBoarding: {
+		alreadyHaveAccount: 'Already have login and password?',
+		signin: 'Login',
+		signup: 'Sign up',
 	}
 }

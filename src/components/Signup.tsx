@@ -1,6 +1,5 @@
 import React from 'react';
 import TextInput from './TextInput';
-import { Feather } from '@expo/vector-icons';
 import { validateSignup } from '../utils/validation';
 import CircledButton from './CircledButton';
 import { useLocalization } from '../context/Localization';

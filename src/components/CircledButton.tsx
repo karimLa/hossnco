@@ -4,18 +4,12 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { Feather } from '@expo/vector-icons';
 import ButtonOpacity from './ButtonOpacity';
 import useTheme from '../context/useTheme';
-
-interface Props {
-	text?: string;
+import type { ButtonOpacityProps } from './ButtonOpacity';
+interface Props extends ButtonOpacityProps {
 	iconName?: string;
 }
 
-const CircledButton: React.FC<Props> = ({
-	children,
-	text,
-	iconName,
-	...props
-}) => {
+const CircledButton: React.FC<Props> = ({ children, iconName, ...props }) => {
 	const { colors } = useTheme();
 
 	return (
@@ -25,6 +19,7 @@ const CircledButton: React.FC<Props> = ({
 			borderRadius={45}
 			justifyContent='center'
 			alignItems='center'
+			backgroundColor='mainBackground'
 			{...props}
 		>
 			{children ? (

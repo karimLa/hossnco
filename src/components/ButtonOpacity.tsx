@@ -6,12 +6,16 @@ import Text from './Text';
 
 const BaseButton = createBox<Theme, TouchableOpacityProps>(TouchableOpacity);
 
-type Props = ComponentProps<typeof BaseButton> &
+export type ButtonOpacityProps = ComponentProps<typeof BaseButton> &
 	ColorProps<Theme> & {
 		text?: string;
 	};
 
-const ButtonOpacity: React.FC<Props> = ({ children, text, ...props }) => {
+const ButtonOpacity: React.FC<ButtonOpacityProps> = ({
+	children,
+	text,
+	...props
+}) => {
 	return (
 		<BaseButton {...props}>
 			{children ? children : <Text>{text}</Text>}

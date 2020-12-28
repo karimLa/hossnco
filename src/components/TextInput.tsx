@@ -6,12 +6,13 @@ import { Theme } from '../constants/theme';
 import Box from './Box';
 import Text from './Text';
 import useTheme from '../context/useTheme';
+import { FeatherIcon } from '../types/icons';
 
 const BaseInput = createBox<Theme, TextInputProps>(Input);
 
 type Props = ComponentProps<typeof BaseInput> &
 	ColorProps<Theme> & {
-		icon?: string;
+		icon?: FeatherIcon;
 		iconSize?: number;
 		iconColor?: keyof Theme['colors'];
 		touched?: boolean;
@@ -43,6 +44,7 @@ const TextInput: React.VFC<Props> = ({
 			>
 				{icon && (
 					<Feather
+						// @ts-ignore
 						name={icon}
 						size={iconSize}
 						color={colors[iconColor || 'iconColor']}

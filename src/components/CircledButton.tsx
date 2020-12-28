@@ -14,9 +14,9 @@ const CircledButton: React.FC<Props> = ({ children, iconName, ...props }) => {
 
 	return (
 		<ButtonOpacity
-			width={90}
-			height={90}
-			borderRadius={45}
+			width={80}
+			height={80}
+			borderRadius={40}
 			justifyContent='center'
 			alignItems='center'
 			backgroundColor='mainBackground'
@@ -45,10 +45,10 @@ export default CircledButton;
 
 const styles = StyleSheet.create({
 	innerCircle: {
-		width: 75,
-		height: 75,
+		width: 70,
+		height: 70,
 		justifyContent: 'center',
 		alignItems: 'center',
-		borderRadius: 75,
+		borderRadius: 35,
 	},
 });

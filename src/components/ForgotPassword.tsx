@@ -35,16 +35,20 @@ const ForgotPassword: React.VFC<Props> = ({ toggleForgotPassword }) => {
 			/>
 			<CircledButton
 				position='absolute'
-				bottom={-40}
+				bottom={-30}
 				left='50%'
 				style={{ transform: [{ translateX: -40 }] }}
 				onPress={done(handleSubmit)}
 			/>
-			<Text fontSize={12} marginTop='xs' textAlign='center'>
+			<Text fontSize={12} letterSpacing={0.4} marginTop='xs' textAlign='center'>
 				{t('onBoarding.alreadyHaveAccount')}
-				<Text color='gradientStart' onPress={toggleForgotPassword}>
-					{t('onBoarding.signin')}
-				</Text>
+			</Text>
+			<Text
+				color='gradientStart'
+				textAlign='center'
+				onPress={toggleForgotPassword}
+			>
+				{t('onBoarding.signin')}
 			</Text>
 		</Box>
 	);

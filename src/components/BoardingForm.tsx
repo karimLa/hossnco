@@ -16,19 +16,21 @@ const BoardingForm = () => {
 	const tabThreeRef = useRef<TransitioningView>();
 
 	const [showSignup, setShowSignup] = useState(false);
-	const [showForgotPassword, SetShowForgotPassword] = useState(false);
+	const [showForgotPassword, setShowForgotPassword] = useState(false);
 
 	const toggleForgotPassword = () => {
 		tabTwoRef.current?.animateNextTransition();
-		SetShowForgotPassword((state) => !state);
+		setShowForgotPassword((state) => !state);
 	};
 
 	return (
 		<Box paddingHorizontal='xl'>
 			<Box
-				height={420}
-				backgroundColor='textWhite'
-				top={-60}
+				height='99%'
+				maxHeight={450}
+				minHeight={370}
+				backgroundColor='mainBackground'
+				top='-8%'
 				paddingVertical='lg'
 				paddingHorizontal='xxl'
 				borderRadius={30}
@@ -40,6 +42,7 @@ const BoardingForm = () => {
 						onPress={() => {
 							tabOneRef.current?.animateNextTransition();
 							setShowSignup(false);
+							setShowForgotPassword(false);
 						}}
 					>
 						<Text paddingBottom='xs'>{t('onBoarding.signin')}</Text>

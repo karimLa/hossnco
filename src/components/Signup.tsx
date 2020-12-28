@@ -52,15 +52,19 @@ const Signup = () => {
 
 			<CircledButton
 				position='absolute'
-				bottom={-40}
+				bottom={-30}
 				left='50%'
 				style={{ transform: [{ translateX: -40 }] }}
 				onPress={done(handleSubmit)}
 			/>
 
-			<Box marginTop='sm' justifyContent='center' alignItems='center'>
-				<Text color='textGrey'>{t('byPressing')}</Text>
-				<Text color='textGrey'>{t('terms')}</Text>
+			<Box justifyContent='center' alignItems='center'>
+				<Text fontSize={12} color='textGrey'>
+					{t('byPressing')}
+				</Text>
+				<Text fontSize={12} color='textGrey'>
+					{t('terms')}
+				</Text>
 			</Box>
 		</Box>
 	);

@@ -29,9 +29,10 @@ const TextInput: React.VFC<Props> = ({
 	const { colors } = useTheme();
 	const borderColor =
 		touched && !error ? 'textSuccess' : error ? 'textError' : 'gradientEnd';
+	const invalid = error && error.length > 0;
 
 	return (
-		<Box marginBottom='sm'>
+		<Box marginBottom={invalid ? 'xs' : 'base'}>
 			<Box
 				flexDirection='row'
 				alignItems='center'
@@ -55,7 +56,7 @@ const TextInput: React.VFC<Props> = ({
 				/>
 			</Box>
 
-			{error && error.length > 0 ? (
+			{invalid ? (
 				<Text variant='textError' marginTop='xs' marginLeft='sm'>
 					{error}
 				</Text>

@@ -63,6 +63,7 @@ function useTextInput<T>(state: T, validate: any) {
 		values,
 		touched,
 		errors,
+		setErrors,
 		handleChange,
 		handleBlur,
 		handleCheckbox,

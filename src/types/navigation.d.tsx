@@ -2,7 +2,7 @@ import { StackNavigationProp } from '@react-navigation/stack';
 
 export type RootStackParamList = {
 	Landing: undefined;
-	Boarding: undefined;
+	OnBoarding: undefined;
 };
 
 type LandingNavigationProp = StackNavigationProp<RootStackParamList, 'Landing'>;

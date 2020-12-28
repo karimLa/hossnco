@@ -1,13 +1,13 @@
 import React, { useRef, useState } from 'react';
 import { Transitioning, TransitioningView } from 'react-native-reanimated';
-import { Slide } from '../utils/animations';
+import { useLocalization } from '../../context/Localization';
+import { Slide } from '../../utils/animations';
 import Signup from './Signup';
 import Signin from './Signin';
-import { useLocalization } from '../context/Localization';
-import Box from './Box';
-import Text from './Text';
 import ForgotPassword from './ForgotPassword';
-import ButtonOpacity from './ButtonOpacity';
+import Box from '../../components/Box';
+import Text from '../../components/Text';
+import ButtonOpacity from '../../components/ButtonOpacity';
 
 const BoardingForm = () => {
 	const { t } = useLocalization();

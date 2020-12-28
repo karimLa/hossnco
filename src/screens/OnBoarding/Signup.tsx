@@ -1,11 +1,11 @@
 import React from 'react';
-import TextInput from './TextInput';
-import { validateSignup } from '../utils/validation';
-import CircledButton from './CircledButton';
-import { useLocalization } from '../context/Localization';
-import useForm from '../hooks/useForm';
-import Text from './Text';
-import Box from './Box';
+import { useLocalization } from '../../context/Localization';
+import { validateSignup } from '../../utils/validation';
+import useForm from '../../hooks/useForm';
+import Box from '../../components/Box';
+import Text from '../../components/Text';
+import TextInput from '../../components/TextInput';
+import CircledButton from '../../components/CircledButton';
 
 const Signup = () => {
 	const { t } = useLocalization();

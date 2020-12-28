@@ -1,11 +1,11 @@
 import React from 'react';
-import { useLocalization } from '../context/Localization';
-import Box from './Box';
-import CircledButton from './CircledButton';
-import TextInput from './TextInput';
-import useForm from '../hooks/useForm';
-import { validateEmail } from '../utils/validation';
-import Text from './Text';
+import { useLocalization } from '../../context/Localization';
+import Box from '../../components/Box';
+import CircledButton from '../../components/CircledButton';
+import TextInput from '../../components/TextInput';
+import useForm from '../../hooks/useForm';
+import { validateEmail } from '../../utils/validation';
+import Text from '../../components/Text';
 
 interface Props {
 	toggleForgotPassword: () => void;

@@ -3,7 +3,7 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import LocalizationProvider from './src/context/Localization';
-import { LandingScreen, BoardingScreen } from './src/screens';
+import { LandingScreen, OnBoardingScreen } from './src/screens';
 import { ThemeProvider } from '@shopify/restyle';
 import theme from './src/constants/theme';
 
@@ -22,8 +22,8 @@ export default function App() {
 						/>
 						<Stack.Screen
 							options={{ headerShown: false }}
-							name='Boarding'
-							component={BoardingScreen}
+							name='OnBoarding'
+							component={OnBoardingScreen}
 						/>
 					</Stack.Navigator>
 				</NavigationContainer>

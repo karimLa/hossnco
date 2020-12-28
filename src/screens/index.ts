@@ -1,4 +1,4 @@
-import LandingScreen from './LandingScreen';
-import BoardingScreen from './BoardingScreen';
+import LandingScreen from './Landing/LandingScreen';
+import OnBoardingScreen from './OnBoarding/OnBoardingScreen';
 
-export { LandingScreen, BoardingScreen };
+export { LandingScreen, OnBoardingScreen };

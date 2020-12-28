@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { Alert } from 'react-native';
-import { useLocalization } from '../context/Localization';
-import { LandingProps } from '../types/navigation.d';
-import { landingScreenBg } from '../constants/images';
-import { storeData } from '../utils/storage';
-import Text from '../components/Text';
-import Box from '../components/Box';
-import ButtonHighlight from '../components/ButtonHighlight';
-import ImageBackground from '../components/ImageBackground';
+import { useLocalization } from '../../context/Localization';
+import { LandingProps } from '../../types/navigation.d';
+import { landingScreenBg } from '../../constants/images';
+import { storeData } from '../../utils/storage';
+import Text from '../../components/Text';
+import Box from '../../components/Box';
+import ButtonHighlight from '../../components/ButtonHighlight';
+import ImageBackground from '../../components/ImageBackground';
 
 const LandingScreen: React.VFC<LandingProps> = ({ navigation }) => {
 	const { t, locale, setLocale } = useLocalization();
@@ -62,7 +62,7 @@ const LandingScreen: React.VFC<LandingProps> = ({ navigation }) => {
 						return;
 					}
 					storeData('locale', locale);
-					navigation.navigate('Boarding');
+					navigation.navigate('OnBoarding');
 				}}
 			/>
 		</ImageBackground>

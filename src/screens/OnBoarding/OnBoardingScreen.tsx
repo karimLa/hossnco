@@ -1,13 +1,13 @@
 import React from 'react';
 import { Keyboard, StyleSheet, TouchableWithoutFeedback } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import { useLocalization } from '../context/Localization';
-import Box from '../components/Box';
-import Text from '../components/Text';
-import useTheme from '../context/useTheme';
-import BoardingForm from '../components/BoardingForm';
+import { useLocalization } from '../../context/Localization';
+import Box from '../../components/Box';
+import Text from '../../components/Text';
+import useTheme from '../../context/useTheme';
+import BoardingForm from './BoardingForm';
 
-const BoardingScreen = () => {
+const OnBoardingScreen = () => {
 	const { colors } = useTheme();
 	const { t } = useLocalization();
 
@@ -46,7 +46,7 @@ const BoardingScreen = () => {
 	);
 };
 
-export default BoardingScreen;
+export default OnBoardingScreen;
 
 const styles = StyleSheet.create({
 	headerContainer: {

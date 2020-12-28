@@ -1,15 +1,15 @@
 import React from 'react';
 import { Alert, TouchableWithoutFeedback } from 'react-native';
 import CheckBox from '@react-native-community/checkbox';
-import { validateSignin } from '../utils/validation';
-import { useLocalization } from '../context/Localization';
-import CircledButton from './CircledButton';
-import Box from './Box';
-import Text from './Text';
-import TextInput from './TextInput';
-import useForm from '../hooks/useForm';
-import ButtonOpacity from './ButtonOpacity';
-import http from '../utils/http';
+import { validateSignin } from '../../utils/validation';
+import { useLocalization } from '../../context/Localization';
+import CircledButton from '../../components/CircledButton';
+import Box from '../../components/Box';
+import Text from '../../components/Text';
+import TextInput from '../../components/TextInput';
+import useForm from '../../hooks/useForm';
+import ButtonOpacity from '../../components/ButtonOpacity';
+import http from '../../utils/http';
 
 interface Props {
 	toggleForgotPassword: () => void;
@@ -27,8 +27,6 @@ const Signin: React.VFC<Props> = ({ toggleForgotPassword }) => {
 		handleCheckbox,
 		done,
 	} = useForm({ email: '', password: '', rememberMe: false }, validateSignin);
-
-	console.log(errors);
 
 	const handleSubmit = async () => {
 		try {

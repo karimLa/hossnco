@@ -1,4 +1,5 @@
 import React from 'react';
+import { Alert } from 'react-native';
 import { useLocalization } from '../../context/Localization';
 import { validateSignup } from '../../utils/validation';
 import useForm from '../../hooks/useForm';
@@ -6,16 +7,42 @@ import Box from '../../components/Box';
 import Text from '../../components/Text';
 import TextInput from '../../components/TextInput';
 import CircledButton from '../../components/CircledButton';
+import http from '../../utils/http';
+import { IUser, useUser } from '../../context/User';
 
 const Signup = () => {
 	const { t } = useLocalization();
-	const { values, touched, errors, handleChange, handleBlur, done } = useForm(
-		{ email: '', password: '', username: '' },
-		validateSignup
-	);
+	const { storeUser } = useUser();
+	const {
+		values,
+		touched,
+		errors,
+		setErrors,
+		handleChange,
+		handleBlur,
+		done,
+	} = useForm({ email: '', password: '', username: '' }, validateSignup);
 
-	const handleSubmit = () => {
-		console.log(values);
+	const handleSubmit = async () => {
+		try {
+			const { data } = await http.post('/user/register', values);
+			const newUser: IUser = {
+				email: data.user.email,
+				username: data.user.username,
+				token: data.token,
+			};
+
+			storeUser(newUser);
+		} catch (err) {
+			if (err.response) {
+				const { data } = err.response;
+				if (Array.isArray(data)) {
+					setErrors({ ...errors, ...data[0] });
+				} else {
+					Alert.alert('Oops!', data.message);
+				}
+			}
+		}
 	};
 
 	return (

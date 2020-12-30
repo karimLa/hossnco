@@ -3,10 +3,9 @@ import { StackNavigationProp } from '@react-navigation/stack';
 export type RootStackParamList = {
 	Landing: undefined;
 	OnBoarding: undefined;
+	Home: undefined;
 };
 
-type LandingNavigationProp = StackNavigationProp<RootStackParamList, 'Landing'>;
-
 export type LandingProps = {
-	navigation: LandingNavigationProp;
+	navigation: StackNavigationProp<RootStackParamList, 'Landing'>;
 };

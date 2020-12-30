@@ -10,6 +10,7 @@ import TextInput from '../../components/TextInput';
 import useForm from '../../hooks/useForm';
 import ButtonOpacity from '../../components/ButtonOpacity';
 import http from '../../utils/http';
+import { IUser, useUser } from '../../context/User';
 
 interface Props {
 	toggleForgotPassword: () => void;
@@ -17,6 +18,7 @@ interface Props {
 
 const Signin: React.VFC<Props> = ({ toggleForgotPassword }) => {
 	const { t } = useLocalization();
+	const { storeUser } = useUser();
 	const {
 		values,
 		touched,
@@ -30,9 +32,14 @@ const Signin: React.VFC<Props> = ({ toggleForgotPassword }) => {
 
 	const handleSubmit = async () => {
 		try {
-			const payload = { email: values.email, password: values.password };
-			const { data } = await http.post('/user/login', payload);
-			console.log(data);
+			const { data } = await http.post('/user/login', values);
+			const newUser: IUser = {
+				email: data.user.email,
+				username: data.user.username,
+				token: data.token,
+			};
+
+			storeUser(newUser);
 		} catch (err) {
 			if (err.response) {
 				const { data } = err.response;

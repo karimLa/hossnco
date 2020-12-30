@@ -1,7 +1,7 @@
 import { Theme } from "../constants/theme";
 import { useTheme as useRestyle } from '@shopify/restyle'
 
-const useTheme = () => {
+function useTheme() {
 	return useRestyle<Theme>();
 }
 

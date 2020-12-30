@@ -61,7 +61,7 @@ const LandingScreen: React.VFC<LandingProps> = ({ navigation }) => {
 						Alert.alert(t('chooseLanguage'));
 						return;
 					}
-					storeData('locale', locale);
+					storeData('@locale', locale);
 					navigation.navigate('OnBoarding');
 				}}
 			/>

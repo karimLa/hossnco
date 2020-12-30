@@ -60,6 +60,7 @@ const BoardingForm = () => {
 
 				<Box marginTop='xl'>
 					<Transitioning.View
+						// @ts-ignore
 						ref={tabOneRef}
 						transition={<Slide type='scale' />}
 					>
@@ -69,6 +70,7 @@ const BoardingForm = () => {
 					</Transitioning.View>
 
 					<Transitioning.View
+						// @ts-ignore
 						ref={tabTwoRef}
 						transition={<Slide type='fade' />}
 					>
@@ -76,6 +78,7 @@ const BoardingForm = () => {
 					</Transitioning.View>
 
 					<Transitioning.View
+						// @ts-ignore
 						ref={tabThreeRef}
 						transition={<Slide type='scale' />}
 					>

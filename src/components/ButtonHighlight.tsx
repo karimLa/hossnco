@@ -3,7 +3,7 @@ import { TouchableHighlight, TouchableHighlightProps } from 'react-native';
 import { ColorProps, createBox } from '@shopify/restyle';
 import { Theme } from '../constants/theme';
 import Text from './Text';
-import useTheme from '../context/useTheme';
+import useTheme from '../hooks/useTheme';
 
 const BaseButton = createBox<Theme, TouchableHighlightProps>(
 	TouchableHighlight

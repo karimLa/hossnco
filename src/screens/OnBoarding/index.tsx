@@ -4,7 +4,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { useLocalization } from '../../context/Localization';
 import Box from '../../components/Box';
 import Text from '../../components/Text';
-import useTheme from '../../context/useTheme';
+import useTheme from '../../hooks/useTheme';
 import BoardingForm from './BoardingForm';
 
 const OnBoardingScreen = () => {

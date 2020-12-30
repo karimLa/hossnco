@@ -5,7 +5,7 @@ import { ColorProps, createBox } from '@shopify/restyle';
 import { Theme } from '../constants/theme';
 import Box from './Box';
 import Text from './Text';
-import useTheme from '../context/useTheme';
+import useTheme from '../hooks/useTheme';
 import { FeatherIcon } from '../types/icons';
 
 const BaseInput = createBox<Theme, TextInputProps>(Input);

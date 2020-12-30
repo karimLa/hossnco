@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Feather } from '@expo/vector-icons';
 import ButtonOpacity from './ButtonOpacity';
-import useTheme from '../context/useTheme';
+import useTheme from '../hooks/useTheme';
 import type { ButtonOpacityProps } from './ButtonOpacity';
 interface Props extends ButtonOpacityProps {
 	iconName?: string;

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useLocalization } from '../context/Localization';
 
-function useTextInput<T>(state: T, validate: any) {
+function useForm<T>(state: T, validate: any) {
 	const { t } = useLocalization();
 	const [values, setValues] = useState<T>(state);
 	const [errors, setErrors] = useState<T>(state);
@@ -71,4 +71,4 @@ function useTextInput<T>(state: T, validate: any) {
 	};
 }
 
-export default useTextInput;
+export default useForm;

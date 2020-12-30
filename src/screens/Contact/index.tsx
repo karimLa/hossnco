@@ -6,11 +6,11 @@ import {
 	TopBarLeft,
 	TopBarRight,
 } from '../Navigation/TopBar';
-import HomeScreen from './Home';
+import ContactScreen from './Contact';
 
 const Stack = createStackNavigator();
 
-function HomeStack() {
+function ContactStack() {
 	return (
 		<Stack.Navigator
 			screenOptions={() => ({
@@ -20,9 +20,9 @@ function HomeStack() {
 				headerRight: () => <TopBarRight />,
 			})}
 		>
-			<Stack.Screen name='Home' component={HomeScreen} />
+			<Stack.Screen name='Contact' component={ContactScreen} />
 		</Stack.Navigator>
 	);
 }
 
-export default HomeStack;
+export default ContactStack;

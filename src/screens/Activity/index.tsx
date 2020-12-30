@@ -6,11 +6,11 @@ import {
 	TopBarLeft,
 	TopBarRight,
 } from '../Navigation/TopBar';
-import HomeScreen from './Home';
+import ActivityScreen from './Activity';
 
 const Stack = createStackNavigator();
 
-function HomeStack() {
+function ActivityStack() {
 	return (
 		<Stack.Navigator
 			screenOptions={() => ({
@@ -20,9 +20,9 @@ function HomeStack() {
 				headerRight: () => <TopBarRight />,
 			})}
 		>
-			<Stack.Screen name='Home' component={HomeScreen} />
+			<Stack.Screen name='Activity' component={ActivityScreen} />
 		</Stack.Navigator>
 	);
 }
 
-export default HomeStack;
+export default ActivityStack;

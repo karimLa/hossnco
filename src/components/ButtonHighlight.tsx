@@ -10,12 +10,14 @@ const BaseButton = createBox<Theme, TouchableHighlightProps>(
 );
 
 type Props = ComponentProps<typeof BaseButton> &
-	ColorProps<Theme> & {
-		text: string;
+	ColorProps<Theme> &
+	React.FC & {
+		text?: string;
 		index?: number;
 		selectedIndex?: number;
 		bgHighlight: keyof Theme['colors'];
 		colorHighlight?: keyof Theme['colors'];
+		children?: React.ReactNode;
 	};
 
 function ButtonHighlight({
@@ -26,6 +28,7 @@ function ButtonHighlight({
 	backgroundColor,
 	color,
 	colorHighlight,
+	children,
 	...props
 }: Props) {
 	const theme = useTheme();
@@ -43,9 +46,13 @@ function ButtonHighlight({
 			alignItems='center'
 			{...props}
 		>
-			<Text variant='textButton' color={textColor}>
-				{text}
-			</Text>
+			{children ? (
+				children
+			) : (
+				<Text variant='textButton' color={textColor}>
+					{text}
+				</Text>
+			)}
 		</BaseButton>
 	);
 }

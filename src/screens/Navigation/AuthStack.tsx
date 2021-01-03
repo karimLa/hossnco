@@ -3,12 +3,6 @@ import { createStackNavigator } from '@react-navigation/stack';
 import LandingScreen from '../Landing';
 import OnBoardingScreen from '../OnBoarding';
 import { IUser } from '../../context/User';
-import {
-	TopBarBackground,
-	TopBarCenter,
-	TopBarLeft,
-	TopBarRight,
-} from './TopBar';
 import AppDrawer from './AppDrawer';
 
 const Stack = createStackNavigator();
@@ -18,25 +12,26 @@ interface Props {
 }
 
 function AuthStack({ user }: Props) {
+	const hideHeader = { headerShown: false };
 	return (
-		<>
+		<Stack.Navigator>
 			{!user ? (
-				<Stack.Navigator>
+				<>
 					<Stack.Screen
-						options={{ headerShown: false }}
+						options={hideHeader}
 						name='Landing'
 						component={LandingScreen}
 					/>
 					<Stack.Screen
-						options={{ headerShown: false }}
+						options={hideHeader}
 						name='OnBoarding'
 						component={OnBoardingScreen}
 					/>
-				</Stack.Navigator>
+				</>
 			) : (
-				<AppDrawer />
+				<Stack.Screen options={hideHeader} name='Home' component={AppDrawer} />
 			)}
-		</>
+		</Stack.Navigator>
 	);
 }
 

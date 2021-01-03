@@ -13,6 +13,7 @@ interface Context {
 	setUser: React.Dispatch<React.SetStateAction<IUser | undefined>>;
 	storeUser: (user: IUser) => Promise<void>;
 	getUser: () => Promise<IUser | undefined>;
+	removeUser: () => Promise<void>;
 }
 
 const UserContext = createContext<Context | undefined>(undefined);
@@ -29,7 +30,7 @@ export function useUser() {
 
 const UserProvider: React.FC = ({ children }) => {
 	const [user, setUser] = useState<IUser>();
-	const { getItem, setItem } = useAsyncStorage('@user');
+	const { getItem, setItem, removeItem } = useAsyncStorage('@user');
 
 	const value = useMemo(
 		() => ({
@@ -58,6 +59,12 @@ const UserProvider: React.FC = ({ children }) => {
 				} catch {
 					return user;
 				}
+			},
+			removeUser: async () => {
+				setUser(undefined);
+				try {
+					await removeItem();
+				} catch {}
 			},
 		}),
 		[user]

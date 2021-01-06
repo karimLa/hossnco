@@ -3,11 +3,11 @@ import {
 	BottomTabBarOptions,
 	BottomTabBarProps,
 } from '@react-navigation/bottom-tabs';
-import { Feather } from '@expo/vector-icons';
-import useTheme from '../../hooks/useTheme';
-import { FeatherIcon } from '../../types/icons';
-import Box from '../../components/Box';
-import ButtonOpacity from '../../components/ButtonOpacity';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { MCIcons } from '../types/icons';
+import useTheme from '../hooks/useTheme';
+import Box from '../components/Box';
+import ButtonOpacity from '../components/ButtonOpacity';
 
 type Props = BottomTabBarProps<BottomTabBarOptions>;
 
@@ -50,23 +50,23 @@ function AppBottomTabBar({ state, descriptors, navigation }: Props) {
 					});
 				};
 
-				let iconName: FeatherIcon;
+				let iconName: MCIcons;
 
 				switch (route.name) {
 					case 'Home':
-						iconName = isFocused ? 'home' : 'home';
+						iconName = isFocused ? 'home' : 'home-outline';
 						break;
 					case 'Activity':
-						iconName = isFocused ? 'bell' : 'bell';
+						iconName = isFocused ? 'bell' : 'bell-outline';
 						break;
 					case 'Settings':
-						iconName = isFocused ? 'user' : 'user';
+						iconName = isFocused ? 'account' : 'account-outline';
 						break;
 					case 'Archive':
-						iconName = isFocused ? 'archive' : 'archive';
+						iconName = isFocused ? 'zip-box' : 'zip-box-outline';
 						break;
 					case 'Contact':
-						iconName = isFocused ? 'shopping-bag' : 'shopping-bag';
+						iconName = isFocused ? 'shopping' : 'shopping-outline';
 						break;
 
 					default:
@@ -91,8 +91,10 @@ function AppBottomTabBar({ state, descriptors, navigation }: Props) {
 							height={60}
 							justifyContent='center'
 							alignItems='center'
+							zIndex={1}
+							style={{ transform: [{ scale: 1.25 }] }}
 						>
-							<Feather
+							<MaterialCommunityIcons
 								// @ts-ignore
 								name={iconName}
 								size={30}
@@ -114,7 +116,7 @@ function AppBottomTabBar({ state, descriptors, navigation }: Props) {
 							justifyContent='center'
 							alignItems='center'
 						>
-							<Feather
+							<MaterialCommunityIcons
 								// @ts-ignore
 								name={iconName}
 								size={24}

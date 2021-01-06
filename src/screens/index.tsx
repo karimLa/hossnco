@@ -2,7 +2,7 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import AppLoading from 'expo-app-loading';
 import usePreload from '../hooks/usePreload';
-import AuthStack from './Navigation/AuthStack';
+import AuthStack from '../navigation/AuthStack';
 
 function Scafold() {
 	const { user, isReady } = usePreload();

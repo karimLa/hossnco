@@ -1,7 +1,7 @@
 import * as Font from 'expo-font';
 import { Asset } from 'expo-asset';
 import { Image } from 'react-native'
-import { FontAwesome } from '@expo/vector-icons';
+import { Feather, MaterialCommunityIcons } from '@expo/vector-icons';
 import { landingScreenBg } from '../constants/images'
 
 function cacheImages(images: any) {
@@ -21,8 +21,7 @@ function cacheFonts(fonts: any) {
 export async function cacheResourcesAsync() {
 	const imageAssets = cacheImages([landingScreenBg]);
 
-	// TODO(karim): change to app fonts.
-	const fontAssets = cacheFonts([FontAwesome.font]);
+	const fontAssets = cacheFonts([MaterialCommunityIcons.font, Feather.font]);
 
 	await Promise.all([...imageAssets, ...fontAssets]);
 }

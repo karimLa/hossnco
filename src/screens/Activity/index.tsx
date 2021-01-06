@@ -5,7 +5,7 @@ import {
 	TopBarCenter,
 	TopBarLeft,
 	TopBarRight,
-} from '../Navigation/TopBar';
+} from '../../navigation/TopBar';
 import ActivityScreen from './Activity';
 
 const Stack = createStackNavigator();

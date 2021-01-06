@@ -1,12 +1,12 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Keyboard, TouchableWithoutFeedback } from 'react-native';
-import HomeStack from '../Home';
-import ActivityStack from '../Activity';
-import SettingsStack from '../Settings';
-import ArchiveStack from '../Archive';
-import ContactStack from '../Contact';
-import Box from '../../components/Box';
+import HomeStack from '../screens/Home';
+import ActivityStack from '../screens/Activity';
+import SettingsStack from '../screens/Settings';
+import ArchiveStack from '../screens/Archive';
+import ContactStack from '../screens/Contact';
+import Box from '../components/Box';
 import AppBottomTabBar from './AppBottomTapBar';
 
 const Tab = createBottomTabNavigator();

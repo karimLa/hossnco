@@ -6,12 +6,12 @@ import {
 	DrawerItem,
 } from '@react-navigation/drawer';
 import { Feather } from '@expo/vector-icons';
-import { useUser } from '../../context/User';
+import { useUser } from '../context/User';
 import { LinearGradient } from 'expo-linear-gradient';
-import ButtonOpacity from '../../components/ButtonOpacity';
-import Box from '../../components/Box';
-import Text from '../../components/Text';
-import useTheme from '../../hooks/useTheme';
+import ButtonOpacity from '../components/ButtonOpacity';
+import Box from '../components/Box';
+import Text from '../components/Text';
+import useTheme from '../hooks/useTheme';
 
 type DrawerProps = DrawerContentComponentProps<DrawerContentOptions>;
 

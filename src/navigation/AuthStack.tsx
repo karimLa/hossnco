@@ -1,8 +1,8 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import LandingScreen from '../Landing';
-import OnBoardingScreen from '../OnBoarding';
-import { IUser } from '../../context/User';
+import LandingScreen from '../screens/Landing';
+import OnBoardingScreen from '../screens/OnBoarding';
+import { IUser } from '../context/User';
 import AppDrawer from './AppDrawer';
 
 const Stack = createStackNavigator();

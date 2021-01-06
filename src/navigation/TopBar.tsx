@@ -1,10 +1,11 @@
 import React from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Feather } from '@expo/vector-icons';
-import Box from '../../components/Box';
-import useTheme from '../../hooks/useTheme';
+import Box from '../components/Box';
+import useTheme from '../hooks/useTheme';
 import { TextInput, TouchableOpacity } from 'react-native';
 import { DrawerActions, useNavigation } from '@react-navigation/native';
+import ButtonOpacity from '../components/ButtonOpacity';
 
 export function TopBarBackground() {
 	const { colors } = useTheme();
@@ -62,15 +63,17 @@ export function TopBarLeft() {
 }
 
 export function TopBarRight() {
+	const { navigate } = useNavigation();
 	const { colors } = useTheme();
 	return (
-		<Box
+		<ButtonOpacity
 			paddingHorizontal='base'
 			height='100%'
 			justifyContent='center'
 			alignContent='center'
+			onPress={() => navigate('Notifications')}
 		>
 			<Feather name='message-square' size={25} color={colors.textWhite} />
-		</Box>
+		</ButtonOpacity>
 	);
 }
